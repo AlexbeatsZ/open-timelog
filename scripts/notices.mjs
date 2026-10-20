@@ -1,5 +1,13 @@
 import { readFile, writeFile, cp } from 'node:fs/promises';
-const names = ['react', 'react-dom', 'scheduler', 'lucide-react', 'idb'];
+const names = [
+  'react',
+  'react-dom',
+  'scheduler',
+  'lucide-react',
+  'idb',
+  '@capacitor/core',
+  '@capacitor/app',
+];
 let result = 'Open Timelog — bundled web dependencies\n\n';
 for (const name of names) {
   const manifest = JSON.parse(await readFile(`node_modules/${name}/package.json`, 'utf8'));

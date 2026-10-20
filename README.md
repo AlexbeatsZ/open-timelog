@@ -1,124 +1,88 @@
 # 时迹 · Open Timelog
 
-独立实现的开源时间记录应用，参考 UpTimer 的记录、回顾与自我反馈理念。
-无需账号，离线保存，MIT 许可。支持 Windows 桌面端和响应式网页 / PWA。
+参考 UpTimer 交互理念、独立编写的开源离线时间记录应用，MIT 许可。
+主界面只有**时间线、计时、目标、分析**四个面板。支持 Windows、macOS、Android
+与响应式网页 / PWA，浅色、暗色与跟随系统外观。
 
-**当前为 0.1.0：可使用的离线首版。** 尚未实现自动多设备同步、UpTimer 原生数据迁移、
-计划与流程、定位/NFC、提醒和 Android 原生 APK。功能边界见
-[参考研究](docs/research/uptimer.md)。
-
-[下载 v0.1.0](https://github.com/AlexbeatsZ/open-timelog/releases/tag/v0.1.0) ·
-[源代码](https://github.com/AlexbeatsZ/open-timelog) ·
-[使用说明](docs/user-guide.md) ·
+[下载最新版](https://github.com/AlexbeatsZ/open-timelog/releases/latest) ·
+[使用说明](docs/user-guide.md) · [AI API](docs/api.md) ·
+[参考分析与边界](docs/research/uptimer.md) ·
 [问题反馈](https://github.com/AlexbeatsZ/open-timelog/issues)
 
-![时迹桌面界面（独立测试数据）](docs/images/desktop.png)
+![桌面时间线，使用独立测试记录](docs/images/desktop.png)
 
-## 已实现
+## 四个面板
 
-- 自定义活动、颜色、积极/日常/消极性质和积分速率；归档与恢复。
-- 正向计时、暂停/继续、专注模式、关闭应用后恢复。
-- 手动补记、多片段编辑、描述与标签、搜索、软删除与恢复。
-- 全天时间条、每日记录、跨日分配、近 7/30 天统计、活动时长分布。
-- 每日/每周时长目标，自动计算进度。
-- 时间积分、奖励管理、积分兑换和兑换历史。
-- JSON 完整备份、导入预览、按版本合并、完整恢复；CSV 与当日 Markdown 导出。
-- 本地事务保存，多窗口更新通知；无账号、遥测和外部字体请求。
+- **时间线**：最新时间在上，记录和空闲都是卡片。点空闲补记；记录可向上/下填满
+  相邻空白。支持日期、描述、标签、搜索、编辑、软删除恢复和跨日片段。
+- **计时**：点活动开始，进入计时页；暂停、继续、专注，结束自动加入时间线。
+  可从上条记录结束处开始。活动管理放在本面板内。
+- **目标**：每日/每周活动时长，自动计算进度、剩余时间与达标状态。
+- **分析**：当日/7/30 天趋势、活动时长、积分与记录数。积分只做反馈统计，暂无商店。
 
-## 开始使用
+设置中提供 JSON 备份、导入预览、合并/完整恢复、CSV、Markdown 导出及本机 API 信息。
+无需账号、遥测、网络字体或云服务；当前使用手动 JSON 跨设备迁移。
 
-从 [GitHub Releases](https://github.com/AlexbeatsZ/open-timelog/releases) 下载
-`Open-Timelog-0.1.0-Windows-x64.zip`，解压并保留文件夹中的全部运行文件。
-Windows 发行包解压后运行 `Open Timelog.exe`，不需要安装 Node 或开发工具。
-数据保存在应用自己的用户目录中，复制程序文件夹不会迁移数据。
-需要迁移时先在「数据与设置」导出 JSON，再在另一端预览并导入。
+## 下载与运行
 
-若使用网页：下载 Release 中的 `Open-Timelog-0.1.0-web.zip`，将解压后的内容
-部署到独立静态站点，使用 HTTPS（或本机 localhost）。从源码构建时部署 `dist/`。
-首次在线打开并完成缓存后可以离线使用，在支持的浏览器中可安装为 PWA。
-浏览器数据与桌面端数据相互独立；清除站点/应用数据前先备份。
+从 [GitHub Releases](https://github.com/AlexbeatsZ/open-timelog/releases/latest) 下载：
 
-### 从源码运行
+| 平台 | 包 | 运行方式 |
+| --- | --- | --- |
+| Windows x64 | `Open-Timelog-0.2.0-Windows-x64.zip` | 完整解压后运行 Open Timelog.exe |
+| macOS Apple Silicon | `Open-Timelog-0.2.0-macOS-arm64.zip` | 解压得到 .app |
+| macOS Intel | `Open-Timelog-0.2.0-macOS-x64.zip` | 解压得到 .app |
+| Android 7+ | `Open-Timelog-0.2.0-Android.apk` | 安装 APK，数据保存在应用内 |
+| 网页 / PWA | `Open-Timelog-0.2.0-web.zip` | 部署到 HTTPS 或 localhost 静态站点 |
 
-需要 Node.js 24 LTS 与 npm。本仓库包含锁文件，推荐 `npm ci`。
+macOS 当前仅 ad-hoc 本地签名，未做 Developer ID 签名与 Apple 公证；首次打开可能被
+Gatekeeper 阻止。遵循系统自己的安全提示与允许流程，本项目不修改系统安全策略。
+Android 暂无持续通知或前台服务；重新打开后按持久时间戳恢复计时。
+
+更新前在「设置 → 备份与导出」导出 JSON，关闭旧版后解压新版。复制程序不等于迁移数据；
+各设备、浏览器和桌面端数据相互独立。0.1 的 v1 备份仍可读，历史奖励字段保留。
+
+## 本机 AI 接口
+
+打开 Windows/macOS 桌面版后，本机 AI 可通过鉴权 REST API 查询/写入活动、记录、计时、
+目标、时间线与统计。`api.json` 自动发现真实端口和凭据，CLI 不打印令牌：
+
+```powershell
+node scripts/api.mjs GET /v1/activities
+node scripts/api.mjs GET /v1/timeline
+node scripts/api.mjs POST /v1/timer/start --data-file start.json
+```
+
+详见 [接口文档](docs/api.md) 和 [OpenAPI](public/openapi.json)。HTTP 服务仅监听
+127.0.0.1，不提供任意脚本、shell、文件访问或完整状态覆盖。
+
+## 源码开发
+
+需要 Node.js 24 LTS 与 npm；Android 另需 JDK 21、Android SDK 36，macOS 打包需在 Mac 运行。
 
 ```powershell
 git clone https://github.com/AlexbeatsZ/open-timelog.git
 cd open-timelog
 npm ci
-npm run dev         # http://127.0.0.1:5173
-npm run desktop     # 构建后打开 Windows 桌面端
-```
-
-首次运行 Electron 需要下载与锁定版本一致的项目运行时。使用已有 HTTP(S) 代理时，
-可在当前终端中设置 `$env:ELECTRON_GET_USE_PROXY='1'`，再运行 `node node_modules/electron/install.js`。
-这仅影响当前进程，不需要修改系统环境变量。
-
-### 更新、回退与常见问题
-
-- 更新前先导出 JSON，关闭程序后将新版解压到新的程序目录。启动后检查记录和目标；
-  若数据位置发生变化，用「完整恢复」导入备份。程序目录和个人数据目录分开保存。
-- 回退时保留新版导出的备份，再运行旧版程序。本次只有 v0.1.0，尚无跨版本数据迁移
-  验收；未来格式版本不兼容时旧版会拒绝导入，不应手改版本号强行恢复。
-- 关闭程序后计时继续是预期行为；休息或睡眠前请先暂停。网页与桌面端数据独立，
-  迁移需使用 JSON；当前没有账号或自动同步入口。
-- 网页无法离线打开时，先确认使用 HTTPS / localhost，并在线重新打开等待缓存完成。
-  清理站点数据前先导出 JSON。直接双击静态 HTML 不属于支持的运行方式。
-- 数据读取失败时，保留应用数据目录并导出恢复文件；不要清理数据来尝试修复。
-  在 [Issues](https://github.com/AlexbeatsZ/open-timelog/issues) 反馈平台、版本、操作步骤
-  和报错；只附脱敏样本，不上传自己的完整记录、恢复文件或账户信息。
-
-### 检查与打包
-
-```powershell
+npm run dev
+npm run desktop
 npm run check
 npm test
-npm run build
-npm run test:e2e     # 使用已安装的 Chrome；Windows 下另验证 Electron
-npm run package:win # release/Open Timelog-win32-x64/
+npm run test:e2e
+npm run package:win
+npm run package:mac
+node scripts/init-android-signing.mjs
+npm run package:android
 ```
 
-开发运行的桌面数据在仓库 `.runtime/desktop`，测试使用独立临时目录，不读取正式数据。
-测试覆盖核心时间语义和用户完整流程；测试文件和截图都不进入发行包。
-源码图标位于 `public/icon.svg`，`npm run icons` 重新生成 PNG 与 Windows ICO。
+Android 签名保存在忽略目录 `.local/`；后续更新需保留同一密钥，不提交或上传它。
+已有代理时可为当前进程设置 `ELECTRON_GET_USE_PROXY=1`，无需修改系统环境。
+开发桌面数据在 `.runtime/desktop`，测试使用独立临时 profile，发行包不含测试或研究数据。
 
-移动布局预览（桌面浏览器窄屏模拟，未做 Android 实机验收）：
+## 范围
 
-<details>
-<summary>展开移动布局截图</summary>
+目前没有自动同步、原版备份兼容、计划/流程、倒计时、系统提醒、定位/NFC 或 iOS 安装包。
+Android 真机触控与生命周期、Intel Mac 实际运行和 Apple 公证须单独验收。
+静态分析只读取原版安装包元数据及交互字符串；没有复制原版代码、图标、字体或资源。
 
-![时迹移动布局](docs/images/mobile.png)
-
-</details>
-
-## 数据规则
-
-计时包含关闭应用、系统睡眠时的经过时间；暂停期间排除。有效时长来自时间戳，
-不依赖前台定时器回调。系统时间倒退会阻止保存；时钟前跳需要在保存后手工修正记录。
-
-日界线跟随当前设备本地时区；移动时区会改变记录在本地日期的归属。
-总记录时长合并重叠区间，活动累计和积分按每条记录计算，避免把不同口径混为一谈。
-活动的性质与积分速率在开始计时/创建记录时保存快照，修改活动不会追溯重算历史。
-
-合并保留较新版本，删除标记参与合并，同版本冲突直接报错。存在进行中计时时不能合并，
-可以先保存计时，或者显式选择完整恢复。完整恢复会替换本机状态，导入前先下载本机备份。
-定期保留 JSON；CSV 和 Markdown 是阅读/分析导出，不是无损恢复格式。
-
-## 项目结构
-
-```text
-src/domain.ts          时间、积分、校验与迁移规则
-src/storage.ts         IndexedDB 事务与更新通知
-src/App.tsx            操作界面
-src/styles.css         桌面与移动布局
-electron/main.cjs      沙箱桌面壳与本地安全协议
-public/sw.js           生产网页离线 app shell
-tests/app.spec.ts      浏览器与 Windows 完整流程
-docs/design/           领域和交互契约
-docs/research/          原版参考证据与功能边界
-```
-
-原版研究仅检查用户安装包的元数据及指定关键字，不复制其实现、图标、字体或其他资产。
-研究不涉及账户数据、认证绕过或连接官方服务。时迹不隶属于 UpTimer。
-
-许可证：[MIT](LICENSE)。发行包保留 Web 依赖和 Electron 自身的第三方许可。
+反馈问题请提供平台、版本和操作步骤，只附脱敏样本；不要上传完整记录、连接令牌或签名材料。

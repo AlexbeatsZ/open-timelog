@@ -1,7 +1,7 @@
 {
   "name": "open-timelog",
   "productName": "Open Timelog",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "时迹 — offline time tracking, reflection and goals",
   "license": "MIT",
   "author": "Open Timelog contributors",
@@ -13,21 +13,29 @@
     "preview": "vite preview --host 127.0.0.1",
     "check": "tsc --noEmit",
     "test": "vitest run",
-    "build": "npm run check && vite build && node scripts/notices.mjs",
+    "build": "node scripts/openapi.mjs && npm run check && vite build && node scripts/notices.mjs",
     "format:check": "prettier --check src electron scripts tests vite.config.ts playwright.config.ts",
     "icons": "node scripts/icons.mjs",
     "desktop": "npm run build && electron .",
     "package:win": "npm run build && node scripts/package.mjs",
+    "package:mac": "npm run build && node scripts/package.mjs --mac",
+    "android:sync": "npm run build && cap sync android",
+    "package:android": "npm run android:sync && node scripts/build-android.mjs",
+    "api": "node scripts/api.mjs",
     "test:e2e": "playwright test",
     "research": "node scripts/inspect-reference.mjs"
   },
   "dependencies": {
+    "@capacitor/android": "^8.5.3",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/core": "^8.5.3",
     "idb": "^8.0.4",
     "lucide-react": "^1.59.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
+    "@capacitor/cli": "^8.5.3",
     "@electron/packager": "^20.3.0",
     "@playwright/test": "^1.64.1",
     "@types/react": "^19.3.0",
@@ -39,5 +47,10 @@
     "typescript": "^7.0.2",
     "vite": "^8.3.4",
     "vitest": "^5.0.5"
+  },
+  "overrides": {
+    "xcode": {
+      "uuid": "^11.1.1"
+    }
   }
 }

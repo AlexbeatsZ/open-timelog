@@ -1,6 +1,6 @@
 // Installed app shells remain available when the network is unavailable.
 const PREFIX = `open-timelog-${new URL(self.registration.scope).pathname}-`;
-const CACHE = PREFIX + 'v0.1.0';
+const CACHE = PREFIX + 'v0.2.0';
 self.addEventListener('install', (event) => {
   event.waitUntil(
     (async () => {
@@ -14,6 +14,8 @@ self.addEventListener('install', (event) => {
       await cache.put('./', response);
       await cache.addAll([
         './icon.svg',
+        './theme.js',
+        './openapi.json',
         './manifest.webmanifest',
         './icon-192.png',
         './icon-512.png',

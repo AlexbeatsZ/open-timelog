@@ -1,5 +1,6 @@
 import { openDB } from 'idb';
 import { initialState, validateState, type State } from './domain';
+import { isAndroid, nativeFiles } from './platform';
 
 const db = openDB('open-timelog', 1, {
   upgrade(database) {
@@ -62,7 +63,15 @@ export async function readRawStorage(): Promise<string> {
     2,
   );
 }
-export function download(name: string, data: string, mime = 'application/json') {
+export async function download(
+  name: string,
+  data: string,
+  mime = 'application/json',
+): Promise<void> {
+  if (isAndroid) {
+    await nativeFiles.save({ name, data, mime: mime.split(';')[0] });
+    return;
+  }
   const url = URL.createObjectURL(new Blob([data], { type: mime }));
   const anchor = document.createElement('a');
   anchor.href = url;
