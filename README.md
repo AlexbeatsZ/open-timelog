@@ -7,6 +7,13 @@
 计划与流程、定位/NFC、提醒和 Android 原生 APK。功能边界见
 [参考研究](docs/research/uptimer.md)。
 
+[下载 v0.1.0](https://github.com/AlexbeatsZ/open-timelog/releases/tag/v0.1.0) ·
+[源代码](https://github.com/AlexbeatsZ/open-timelog) ·
+[使用说明](docs/user-guide.md) ·
+[问题反馈](https://github.com/AlexbeatsZ/open-timelog/issues)
+
+![时迹桌面界面（独立测试数据）](docs/images/desktop.png)
+
 ## 已实现
 
 - 自定义活动、颜色、积极/日常/消极性质和积分速率；归档与恢复。
@@ -20,11 +27,14 @@
 
 ## 开始使用
 
+从 [GitHub Releases](https://github.com/AlexbeatsZ/open-timelog/releases) 下载
+`Open-Timelog-0.1.0-Windows-x64.zip`，解压并保留文件夹中的全部运行文件。
 Windows 发行包解压后运行 `Open Timelog.exe`，不需要安装 Node 或开发工具。
 数据保存在应用自己的用户目录中，复制程序文件夹不会迁移数据。
 需要迁移时先在「数据与设置」导出 JSON，再在另一端预览并导入。
 
-若使用网页：部署 `dist/` 到独立静态站点，使用 HTTPS（或本机 localhost）。
+若使用网页：下载 Release 中的 `Open-Timelog-0.1.0-web.zip`，将解压后的内容
+部署到独立静态站点，使用 HTTPS（或本机 localhost）。从源码构建时部署 `dist/`。
 首次在线打开并完成缓存后可以离线使用，在支持的浏览器中可安装为 PWA。
 浏览器数据与桌面端数据相互独立；清除站点/应用数据前先备份。
 
@@ -33,6 +43,8 @@ Windows 发行包解压后运行 `Open Timelog.exe`，不需要安装 Node 或�
 需要 Node.js 24 LTS 与 npm。本仓库包含锁文件，推荐 `npm ci`。
 
 ```powershell
+git clone https://github.com/AlexbeatsZ/open-timelog.git
+cd open-timelog
 npm ci
 npm run dev         # http://127.0.0.1:5173
 npm run desktop     # 构建后打开 Windows 桌面端
@@ -41,6 +53,20 @@ npm run desktop     # 构建后打开 Windows 桌面端
 首次运行 Electron 需要下载与锁定版本一致的项目运行时。使用已有 HTTP(S) 代理时，
 可在当前终端中设置 `$env:ELECTRON_GET_USE_PROXY='1'`，再运行 `node node_modules/electron/install.js`。
 这仅影响当前进程，不需要修改系统环境变量。
+
+### 更新、回退与常见问题
+
+- 更新前先导出 JSON，关闭程序后将新版解压到新的程序目录。启动后检查记录和目标；
+  若数据位置发生变化，用「完整恢复」导入备份。程序目录和个人数据目录分开保存。
+- 回退时保留新版导出的备份，再运行旧版程序。本次只有 v0.1.0，尚无跨版本数据迁移
+  验收；未来格式版本不兼容时旧版会拒绝导入，不应手改版本号强行恢复。
+- 关闭程序后计时继续是预期行为；休息或睡眠前请先暂停。网页与桌面端数据独立，
+  迁移需使用 JSON；当前没有账号或自动同步入口。
+- 网页无法离线打开时，先确认使用 HTTPS / localhost，并在线重新打开等待缓存完成。
+  清理站点数据前先导出 JSON。直接双击静态 HTML 不属于支持的运行方式。
+- 数据读取失败时，保留应用数据目录并导出恢复文件；不要清理数据来尝试修复。
+  在 [Issues](https://github.com/AlexbeatsZ/open-timelog/issues) 反馈平台、版本、操作步骤
+  和报错；只附脱敏样本，不上传自己的完整记录、恢复文件或账户信息。
 
 ### 检查与打包
 
@@ -55,6 +81,15 @@ npm run package:win # release/Open Timelog-win32-x64/
 开发运行的桌面数据在仓库 `.runtime/desktop`，测试使用独立临时目录，不读取正式数据。
 测试覆盖核心时间语义和用户完整流程；测试文件和截图都不进入发行包。
 源码图标位于 `public/icon.svg`，`npm run icons` 重新生成 PNG 与 Windows ICO。
+
+移动布局预览（桌面浏览器窄屏模拟，未做 Android 实机验收）：
+
+<details>
+<summary>展开移动布局截图</summary>
+
+![时迹移动布局](docs/images/mobile.png)
+
+</details>
 
 ## 数据规则
 

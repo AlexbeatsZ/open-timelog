@@ -8,6 +8,8 @@ Deliver a working Windows desktop app and responsive offline web app first.
 # Current State
 
 - v0.1.0 implemented; no dependency on the retired private `uptimer` experiment.
+- Public repository: `https://github.com/AlexbeatsZ/open-timelog`;
+  `origin` uses HTTPS, branch `main`. Publication work records live in `docs/log/`.
 - Stack: React + TypeScript + Vite, IndexedDB, Electron desktop wrapper.
 - Activities, durable timer, records/tags/search, daily timeline, 7/30-day
   analytics, daily/weekly goals, points/rewards, JSON merge/restore and exports
@@ -21,8 +23,8 @@ Deliver a working Windows desktop app and responsive offline web app first.
 
 # Active Work
 
-- v0.1.0 implementation and Windows packaging are complete. Source is local;
-  no Git remote or public repository has been configured.
+- v0.1.0 implementation and Windows packaging are complete. Push and Release
+  publication are authorized; keep source, release tag and public docs aligned.
 - Next candidates: editable day calendar, split/merge records, countdown;
   then plans/workflows and separately designed self-hosted sync.
 
