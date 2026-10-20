@@ -21,3 +21,21 @@ Android lint 无错误；仍有生成模板资源未使用、工具版本建议�
 随包 baseline；这不是本项目新加的豁免。APK 使用项目专用密钥，私钥与密码不随发行上传。
 
 没有验证原版数据格式、官方同步兼容、跨设备自动同步；没有 iOS 原生包、系统提醒或前台服务。
+
+## 发布结果
+
+`v0.2.0` 标签指向源码提交 `cffda83`；该源码的 main/tag 两轮 GitHub CI 均通过。
+正式 Release：https://github.com/AlexbeatsZ/open-timelog/releases/tag/v0.2.0。
+8 个附件全部 state=uploaded，名称和大小逐项匹配本地构建；非 draft、非 prerelease。
+匿名访问 Release 页与 APK 下载均返回 HTTP 200。
+
+| 文件 | 字节数 |
+| --- | ---: |
+| Open-Timelog-0.2.0-Windows-x64.zip | 163413595 |
+| Open-Timelog-0.2.0-macOS-arm64.zip | 127290526 |
+| Open-Timelog-0.2.0-macOS-x64.zip | 134103309 |
+| Open-Timelog-0.2.0-Android.apk | 3246840 |
+| Open-Timelog-0.2.0-web.zip | 228246 |
+| Open-Timelog-0.2.0-guide.md | 1912 |
+| Open-Timelog-0.2.0-api.md | 5009 |
+| Open-Timelog-0.2.0-openapi.json | 49755 |

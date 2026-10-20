@@ -7,7 +7,7 @@ or read its user database, sessions or account data. Keep original assets separa
 # Current State
 
 - Public own repo: https://github.com/AlexbeatsZ/open-timelog, main tracks origin/main.
-- Public v0.1.0 is available; v0.2.0 builds verified; unified release publication in progress.
+- Public v0.2.0 is published with 8 assets: Windows, two Mac architectures, Android, web, guide, API guide and OpenAPI. Source tag cffda83; tag/main CI passed.
 - React/TypeScript + IndexedDB; Electron Windows/macOS; Capacitor Android; offline PWA.
 - v0.2 UI has exactly four main panels: latest-first card timeline, timer, goals, analysis.
   Idle cards allow record creation; records can fill upper/lower adjacent idle gaps.
@@ -24,8 +24,9 @@ or read its user database, sessions or account data. Keep original assets separa
 
 # Active Work
 
-- Android assembleRelease/lintRelease and APK signature verification passed.
-- Package v0.2.0 source/web/Windows plus macOS/Android under one GitHub Release.
+- v0.2.0 implementation, all platform packaging and public Release are complete.
+- Release: https://github.com/AlexbeatsZ/open-timelog/releases/tag/v0.2.0.
+  Eight uploaded assets match local names/sizes; anonymous release/APK HEAD returned 200.
 - Keep verification boundaries explicit: no Android physical touch/lifecycle acceptance,
   no Intel runtime acceptance, no Apple Developer ID signing/notarization.
 
