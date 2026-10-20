@@ -10,6 +10,10 @@ Deliver a working Windows desktop app and responsive offline web app first.
 - v0.1.0 implemented; no dependency on the retired private `uptimer` experiment.
 - Public repository: `https://github.com/AlexbeatsZ/open-timelog`;
   `origin` uses HTTPS, branch `main`. Publication work records live in `docs/log/`.
+- Public release: `https://github.com/AlexbeatsZ/open-timelog/releases/tag/v0.1.0`;
+  source tag points to `34cde01`. Windows ZIP, static web ZIP and guide uploaded.
+- GitHub tag CI passed; anonymous repository/release/Windows-download checks
+  returned HTTP 200. Local user deliverables remain under the chat's `outputs/`.
 - Stack: React + TypeScript + Vite, IndexedDB, Electron desktop wrapper.
 - Activities, durable timer, records/tags/search, daily timeline, 7/30-day
   analytics, daily/weekly goals, points/rewards, JSON merge/restore and exports
@@ -23,8 +27,8 @@ Deliver a working Windows desktop app and responsive offline web app first.
 
 # Active Work
 
-- v0.1.0 implementation and Windows packaging are complete. Push and Release
-  publication are authorized; keep source, release tag and public docs aligned.
+- v0.1.0 implementation, Windows packaging and public Release are complete.
+  Keep source, release tags and public documentation aligned on future updates.
 - Next candidates: editable day calendar, split/merge records, countdown;
   then plans/workflows and separately designed self-hosted sync.
 
@@ -54,3 +58,4 @@ Deliver a working Windows desktop app and responsive offline web app first.
 - `docs/design/domain.md`: time, persistence, points and import contracts.
 - `docs/design/interface.md`: interaction and visual choices.
 - `docs/research/uptimer.md`: references, local package evidence and parity.
+- `docs/user-guide.md`: end-user operation, backup, migration and deployment.
